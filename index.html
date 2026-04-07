@@ -9,20 +9,15 @@
             text-align: center;
             color: white;
             overflow-x: hidden;
+
+            /* 🖼️ IMAGE BACKGROUND */
+            background: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* 🎥 Video Background */
-        #bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        /* 🔥 Dark overlay for readability */
+        /* 🔥 Dark overlay */
         .overlay {
             position: fixed;
             top: 0;
@@ -33,16 +28,17 @@
             z-index: -1;
         }
 
+        /* 🔴 RED GAMER TITLE */
         h1 {
-            color: cyan;
+            color: #ff0000;
             font-size: 45px;
-            text-shadow: 0 0 15px cyan;
-            animation: glow 2s infinite alternate;
+            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px darkred;
+            animation: glowRed 2s infinite alternate;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 10px cyan; }
-            to { text-shadow: 0 0 25px cyan; }
+        @keyframes glowRed {
+            from { text-shadow: 0 0 10px red; }
+            to { text-shadow: 0 0 30px red; }
         }
 
         .bio {
@@ -51,9 +47,11 @@
             color: #ccc;
         }
 
+        /* 🔴 GAMER BUTTONS */
         a {
             color: white;
-            background: #00adb5;
+            background: #111;
+            border: 1px solid red;
             padding: 12px 25px;
             display: inline-block;
             margin: 10px;
@@ -63,8 +61,9 @@
         }
 
         a:hover {
-            background: cyan;
+            background: red;
             color: black;
+            box-shadow: 0 0 15px red;
             transform: scale(1.1);
         }
 
@@ -76,28 +75,24 @@
             margin-top: 20px;
         }
 
+        /* 🔴 RED PROFILE */
         .profile img {
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            border: 3px solid cyan;
-            box-shadow: 0 0 20px cyan;
+            border: 3px solid red;
+            box-shadow: 0 0 20px red, 0 0 40px darkred;
         }
 
         .discord-id {
             margin-top: 10px;
             font-weight: bold;
-            color: cyan;
+            color: red;
         }
 
     </style>
 </head>
 <body>
-
-    <!-- 🎥 Video -->
-    <video autoplay muted loop id="bg-video">
-        <source src="bg.mp4" type="video/mp4">
-    </video>
 
     <!-- 🔥 Overlay -->
     <div class="overlay"></div>
@@ -107,7 +102,7 @@
         <img src="profile.jpg">
     </div>
 
-    <h1>⚡ Shreyash Dhanvijay ⚡</h1>
+    <h1>Shreyash Dhanvijay</h1>
 
     <p class="bio">
         "If to be truthful is to be cruel, then lying must surely be an act of kindness. 

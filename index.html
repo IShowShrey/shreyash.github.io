@@ -1,34 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+    <title>Shreyash Dhanvijay</title>
     <style>
         body {
+            margin: 0;
             font-family: Arial;
             text-align: center;
-            background: #111;
             color: white;
+            background: black;
+            overflow-x: hidden;
         }
-        a {
+
+        /* Animated background */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #00f7ff22 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveBg 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveBg {
+            from { transform: translate(0,0); }
+            to { transform: translate(-100px,-100px); }
+        }
+
+        h1 {
             color: cyan;
-            display: block;
-            margin: 10px;
+            font-size: 45px;
+            text-shadow: 0 0 15px cyan;
+            animation: glow 2s infinite alternate;
         }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px cyan; }
+            to { text-shadow: 0 0 25px cyan; }
+        }
+
+        .bio {
+            font-style: italic;
+            margin: 20px;
+            color: #ccc;
+        }
+
+        a {
+            color: white;
+            background: #00adb5;
+            padding: 12px 25px;
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: cyan;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        /* Profile Image */
+        .profile {
+            margin-top: 20px;
+        }
+
+        .profile img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid cyan;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        .discord-id {
+            margin-top: 10px;
+            font-weight: bold;
+            color: cyan;
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Shreyash</h1>
-    <p>Welcome to my website</p>
+    <div class="profile">
+        <img src="profile.jpg">
+    </div>
 
-    <h2>📱 Contact</h2>
-    <p>Phone: Your Number</p>
-    <p>Email: your@email.com</p>
+    <h1>⚡ Shreyash Dhanvijay ⚡</h1>
 
-    <h2>🌐 Social Links</h2>
-    <a href="#">Instagram</a>
-    <a href="#">YouTube</a>
-    <a href="#">Discord</a>
+    <p class="bio">
+        "If to be truthful is to be cruel, then lying must surely be an act of kindness. 
+        And so, kindness is a lie."
+    </p>
+
+    <div class="section">
+        <h2>📧 Contact</h2>
+        <p>Email: shreyashdhanvijay12@gmail.com</p>
+    </div>
+
+    <div class="section">
+        <h2>🌐 Social Links</h2>
+        <a href="https://www.instagram.com/_cursed_shreyash_?igsh=amNyb2J2YXNuMmVn" target="_blank">Instagram</a>
+        <a href="https://discord.gg/dtPna9QU" target="_blank">Discord Profile</a>
+        <a href="https://discord.gg/eV4qq9BB" target="_blank">Discord Server</a>
+
+        <p class="discord-id">Discord ID: ishowshrey</p>
+    </div>
 
 </body>
 </html>

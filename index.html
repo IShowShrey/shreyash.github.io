@@ -41,10 +41,12 @@
             to { text-shadow: 0 0 30px red; }
         }
 
-        .bio {
+        /* ✨ Typing text style */
+        #typing {
             font-style: italic;
             margin: 20px;
             color: #ccc;
+            font-size: 18px;
         }
 
         /* 🔴 GAMER BUTTONS */
@@ -67,8 +69,18 @@
             transform: scale(1.1);
         }
 
+        /* 🧱 Hover cards */
         .section {
-            margin-top: 30px;
+            margin: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid red;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .section:hover {
+            box-shadow: 0 0 20px red;
         }
 
         .profile {
@@ -104,10 +116,8 @@
 
     <h1>Shreyash Dhanvijay</h1>
 
-    <p class="bio">
-        "If to be truthful is to be cruel, then lying must surely be an act of kindness. 
-        And so, kindness is a lie."
-    </p>
+    <!-- ✨ Typing Animation -->
+    <p id="typing"></p>
 
     <div class="section">
         <h2>📧 Contact</h2>
@@ -122,6 +132,53 @@
 
         <p class="discord-id">Discord ID: ishowshrey</p>
     </div>
+
+    <!-- ✨ Typing Script -->
+    <script>
+    let text = ["Gamer", "Content Creator", "Anime Lover"];
+    let i = 0, j = 0;
+    let currentText = "";
+    let isDeleting = false;
+
+    function type() {
+        if (i < text.length) {
+            if (!isDeleting && j <= text[i].length) {
+                currentText = text[i].substring(0, j++);
+            } else if (isDeleting && j >= 0) {
+                currentText = text[i].substring(0, j--);
+            }
+
+            document.getElementById("typing").innerHTML = currentText;
+
+            if (j == text[i].length) isDeleting = true;
+            if (j == 0) { isDeleting = false; i++; }
+
+            setTimeout(type, isDeleting ? 50 : 100);
+        } else {
+            i = 0;
+            setTimeout(type, 500);
+        }
+    }
+    type();
+    </script>
+
+    <!-- 🔥 Click Effect -->
+    <script>
+    document.addEventListener("click", function(e) {
+        let circle = document.createElement("div");
+        circle.style.position = "fixed";
+        circle.style.width = "10px";
+        circle.style.height = "10px";
+        circle.style.background = "red";
+        circle.style.borderRadius = "50%";
+        circle.style.left = e.clientX + "px";
+        circle.style.top = e.clientY + "px";
+        circle.style.boxShadow = "0 0 20px red";
+        document.body.appendChild(circle);
+
+        setTimeout(() => circle.remove(), 500);
+    });
+    </script>
 
 </body>
 </html>

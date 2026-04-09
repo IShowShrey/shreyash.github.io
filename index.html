@@ -2,54 +2,68 @@
 <html>
 <head>
     <title>Shreyash Dhanvijay</title>
+
+    <!-- 🎮 Gaming Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
-            font-family: Arial;
+            font-family: 'Orbitron', sans-serif;
             text-align: center;
             color: white;
             overflow-x: hidden;
 
-            /* 🖼️ IMAGE BACKGROUND */
             background: url('bg.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* 🔥 Dark overlay */
-        .overlay {
+        /* 🔥 Loader */
+        #loader {
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            font-size: 30px;
+            color: red;
+        }
+
+        /* 🔥 Overlay */
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
             z-index: -1;
         }
 
-        /* 🔴 RED GAMER TITLE */
+        /* 🌌 Particles */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+
         h1 {
-            color: #ff0000;
+            color: red;
             font-size: 45px;
-            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px darkred;
-            animation: glowRed 2s infinite alternate;
+            text-shadow: 0 0 20px red;
         }
 
-        @keyframes glowRed {
-            from { text-shadow: 0 0 10px red; }
-            to { text-shadow: 0 0 30px red; }
-        }
-
-        /* ✨ Typing text style */
-        #typing {
-            font-style: italic;
-            margin: 20px;
-            color: #ccc;
+        /* 🧠 Quote */
+        .quote {
+            font-weight: bold;
             font-size: 18px;
+            margin: 20px;
         }
 
-        /* 🔴 GAMER BUTTONS */
         a {
             color: white;
             background: #111;
@@ -66,119 +80,105 @@
             background: red;
             color: black;
             box-shadow: 0 0 15px red;
-            transform: scale(1.1);
         }
 
-        /* 🧱 Hover cards */
         .section {
             margin: 30px;
             padding: 20px;
             background: rgba(0,0,0,0.6);
             border: 1px solid red;
             border-radius: 15px;
-            transition: 0.3s;
         }
 
-        .section:hover {
-            box-shadow: 0 0 20px red;
-        }
-
-        .profile {
-            margin-top: 20px;
-        }
-
-        /* 🔴 RED PROFILE */
         .profile img {
             width: 140px;
-            height: 140px;
             border-radius: 50%;
             border: 3px solid red;
-            box-shadow: 0 0 20px red, 0 0 40px darkred;
-        }
-
-        .discord-id {
-            margin-top: 10px;
-            font-weight: bold;
-            color: red;
+            box-shadow: 0 0 20px red;
         }
 
     </style>
 </head>
 <body>
 
-    <!-- 🔥 Overlay -->
-    <div class="overlay"></div>
+<!-- 🔥 Loader -->
+<div id="loader">Loading...</div>
 
-    <!-- 🖼️ Profile -->
-    <div class="profile">
-        <img src="profile.jpg">
-    </div>
+<!-- 🌌 Particles -->
+<canvas id="particles"></canvas>
 
-    <h1>Shreyash Dhanvijay</h1>
+<!-- 🔥 Overlay -->
+<div class="overlay"></div>
 
-    <!-- ✨ Typing Animation -->
-    <p id="typing"></p>
+<!-- 🎧 Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
 
-    <div class="section">
-        <h2>📧 Contact</h2>
-        <p>Email: shreyashdhanvijay11@gmail.com</p>
-    </div>
+<div class="profile">
+    <img src="profile.jpg">
+</div>
 
-    <div class="section">
-        <h2>🌐 Social Links</h2>
-        <a href="https://www.instagram.com/_cursed_shreyash_?igsh=amNyb2J2YXNuMmVn" target="_blank">Instagram</a>
-        <a href="https://discord.gg/dtPna9QU" target="_blank">Discord Profile</a>
-        <a href="https://discord.gg/eV4qq9BB" target="_blank">Discord Server</a>
+<h1>Shreyash Dhanvijay</h1>
 
-        <p class="discord-id">Discord ID: ishowshrey</p>
-    </div>
+<p class="quote">
+"If to be truthful is to be cruel, then lying must surely be an act of kindness. And so, kindness is a lie."
+</p>
 
-    <!-- ✨ Typing Script -->
-    <script>
-    let text = ["Gamer", "Content Creator", "Anime Lover"];
-    let i = 0, j = 0;
-    let currentText = "";
-    let isDeleting = false;
+<div class="section">
+    <h2>Contact</h2>
+    <p>shreyashdhanvijay11@gmail.com</p>
+</div>
 
-    function type() {
-        if (i < text.length) {
-            if (!isDeleting && j <= text[i].length) {
-                currentText = text[i].substring(0, j++);
-            } else if (isDeleting && j >= 0) {
-                currentText = text[i].substring(0, j--);
-            }
+<div class="section">
+    <h2>Social</h2>
+    <a href="https://www.instagram.com/_cursed_shreyash_">Instagram</a>
+    <a href="https://discord.gg/dtPna9QU">Discord</a>
+</div>
 
-            document.getElementById("typing").innerHTML = currentText;
+<!-- 🔥 Loader Script -->
+<script>
+window.onload = function() {
+    document.getElementById("loader").style.display = "none";
+}
+</script>
 
-            if (j == text[i].length) isDeleting = true;
-            if (j == 0) { isDeleting = false; i++; }
+<!-- 🌌 Particle Script -->
+<script>
+let canvas = document.getElementById("particles");
+let ctx = canvas.getContext("2d");
 
-            setTimeout(type, isDeleting ? 50 : 100);
-        } else {
-            i = 0;
-            setTimeout(type, 500);
-        }
-    }
-    type();
-    </script>
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    <!-- 🔥 Click Effect -->
-    <script>
-    document.addEventListener("click", function(e) {
-        let circle = document.createElement("div");
-        circle.style.position = "fixed";
-        circle.style.width = "10px";
-        circle.style.height = "10px";
-        circle.style.background = "red";
-        circle.style.borderRadius = "50%";
-        circle.style.left = e.clientX + "px";
-        circle.style.top = e.clientY + "px";
-        circle.style.boxShadow = "0 0 20px red";
-        document.body.appendChild(circle);
+let particles = [];
 
-        setTimeout(() => circle.remove(), 500);
+for(let i=0;i<100;i++){
+    particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2
     });
-    </script>
+}
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "red";
+
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+
+        p.y += 0.5;
+        if(p.y > canvas.height) p.y = 0;
+    });
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
 
 </body>
 </html>
